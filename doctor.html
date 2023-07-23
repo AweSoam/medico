@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div>
+        <header class="header">
+
+            <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> MEDCLBKEY </a>
+        
+            <nav class="navbar">
+                
+                <!-- <a href="service.html">services</a> -->
+                <a href="home.html">home</a>
+                <a href= "about.html" >about</a>
+                <a href="#book">book</a>
+                <a href="review.html">review</a>
+                <a href="blog.html">blogs</a>
+                <a href="contact.html">contact us</a>
+            </nav>
+        
+            <div id="menu-btn" class="fas fa-bars"></div>
+        
+        </header>
+    
+    <section class="doctors" id="doctors">
+
+        <h1 class="heading"> our <span>doctors</span> </h1>
+    
+        <div class="box-container">
+    
+            <div class="box">
+                <img src="image/dr santosini.jpg" alt="">
+                <h3>Dr. Santosini Sarangi</h3>
+                <span>Cardiologist</span>
+                <div> 
+                    <a href="home.html"><button onclick="decreaseValue()" class="btn avl" >book now</button></a>
+                    <input type="button" class="btn avl" value="Available" onClick="display();">
+                </div>
+            </div>
+    
+            <div class="box">
+                <img src="image/dr_dharma durai.jpg" alt="">
+                <h3>Dr. Dharma Durai</h3>
+                <span>ENT Specialist</span>
+                <div><button class="btn">book now</button>
+                <button class="btn avl">Available</button></div>
+                
+            </div>
+    
+            <div class="box">
+                <img src="image/dr murali.jpeg" alt="">
+                <h3>Dr. Murali Prasad</h3>
+                <span>Orthopedic Specialist</span>
+                <div><button class="btn">book now</button>
+                    <button class="btn avl">Available</button></div>
+
+            </div>
+    
+            <div class="box">
+                <img src="image/kabir singh.jpg" alt="">
+                <h3>Dr. Kabir Singh</h3>
+                <span>Neurologist</span>
+                <div><button class="btn">book now</button>
+                    <button class="btn avl">Available</button></div>
+            </div>
+    
+            <div class="box">
+                <img src="image/dr v maaran.jpg" alt="">
+                <h3>Dr. V Maaran</h3>
+                <span>Dermatologist</span>
+                <div><button class="btn">book now</button>
+                    <button class="btn avl">Available</button></div>
+            </div>
+    
+            <div class="box">
+                <img src="image/dr chandan.png" alt="">
+                <h3>Dr. Chandan Mishra</h3>
+                <span>Pediatrician</span>
+                <div><button class="btn">book now</button>
+                    <button class="btn avl">Available</button></div>
+            </div>
+    
+        </div>
+
+        <script>
+            // Get the current value from local storage, or set it to 10 if it doesn't exist
+            var currentValue = parseInt(localStorage.getItem("value")) || 10;
+            // Set the value of the span element to the current value
+            document.getElementById("value").innerHTML = currentValue;
+
+            function decreaseValue() {
+                if (currentValue != 0) {
+                    currentValue--;
+                    // Save the new value to local storage
+                    localStorage.setItem("value", currentValue);
+                }
+                document.getElementById("value").innerHTML = currentValue;
+
+
+            }
+
+            function display() {
+                var a = currentValue;
+                alert("There are " + a + " slots are available");
+            }
+
+            // Set a timeout to reset the value to 10 after 24 hours
+            setTimeout(function () {
+                localStorage.setItem("value", "10");
+                document.getElementById("value").innerHTML = "10";
+            }, 2 * 60 * 1000);
+        </script>
+    
+    </section>
+    <script src="js/script.js"></script>
+   </div>
+</body>
+</html>

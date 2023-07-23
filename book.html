@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+
+        <a href="home.html" class="logo"> <i class="fas fa-heartbeat"></i> MEDCLBKEY </a>
+
+        <nav class="navbar">
+
+            <!-- <a href="service.html">services</a> -->
+            <a href="about.html">about</a>
+            <a href="doctor.html">doctors</a>
+            <a href="book.html">book</a>
+            <a href="review.html">review</a>
+            <a href="blog.html">blogs</a>
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+    </header>
+    <section class="book" id="book">
+
+        <h1 class="heading"> <span>book</span> now </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="image/book-img.svg" alt="">
+            </div>
+
+            <form >
+                <h3>book appointment</h3>
+                <input type="text" placeholder="your name" class="box" id="namebox">
+                <input type="number" placeholder="your number" class="box" id="numbox">
+                <input type="email" placeholder="your email" class="box" id="mailbox">
+                <input type="date" class="box" id="datebox">
+
+                <div>
+                    <a href="home.html"><button onclick="decreaseValue()" class="btn avl">Submit</button></a>
+                <input type="button" class="btn avl" value="Available" onClick="display();">
+                </div>
+            </form>
+
+        </div>
+        <!-- <script>
+            // Get the current value from local storage, or set it to 10 if it doesn't exist
+            var currentValue = parseInt(localStorage.getItem("value")) || 10;
+            // Set the value of the span element to the current value
+            document.getElementById("value").innerHTML = currentValue;
+
+            function decreaseValue() {
+                if (currentValue != 0) {
+                    currentValue--;
+                    // Save the new value to local storage
+                    localStorage.setItem("value", currentValue);
+                }
+                document.getElementById("value").innerHTML = currentValue;
+
+
+            }
+
+            function display() {
+                var a = currentValue;
+                alert("There are " + a + " slots are available");
+            }
+
+            // Set a timeout to reset the value to 10 after 24 hours
+            setTimeout(function () {
+                localStorage.setItem("value", "10");
+                document.getElementById("value").innerHTML = "10";
+            }, 2 * 60 * 1000);
+        </script> -->
+
+
+
+        <script type="module">
+
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+    
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyBN4S6x6Fwr1PBzfqa9cDJ_YxJ9d9YTOOo",
+                authDomain: "medclbkey-65f74.firebaseapp.com",
+                projectId: "medclbkey-65f74",
+                storageBucket: "medclbkey-65f74.appspot.com",
+                messagingSenderId: "330384169777",
+                appId: "1:330384169777:web:998e61c8fd80d5765fee10",
+                measurementId: "G-DQQ95L4BRH"
+            };
+    
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            import { getFirestore, doc, setDoc, addDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+    
+    
+    
+            const db = getFirestore();
+            let NameBox = document.getElementById("Namebox");
+            let RollBox = document.getElementById("numbox");
+            let EmailBox = document.getElementById("mailbox");
+            let DateBox = document.getElementById("datebox");
+            let submit = document.getElementById("submitbtn");
+    
+            async function AddDocument_CustomID() {
+                var ref = doc(db, "patientlist", document.getElementById("NumBox").value);
+                await setDoc(
+                    ref, {
+                    NameofStd: document.getElementById("NameBox").value,
+                    RollNo: document.getElementById("NumBox").value,
+                    Section: document.getElementById("EmailBox").value,
+                    Gender: document.getElementById("DateBox").value
+                }
+                )
+    
+                    .then(() => {
+    
+                        alert("data added successfully");
+    
+                    }
+                    )
+                    .catch((error) => {
+                        alert("unsuccessfull,error:" + error);
+                    });
+    
+            }
+    
+    
+            submitbtn.addEventListener("click", AddDocument_CustomID);
+    
+        </script>
+
+    </section>
+    <!-- <script src="js/form.js"></script> -->
+</body>
+
+</html>
